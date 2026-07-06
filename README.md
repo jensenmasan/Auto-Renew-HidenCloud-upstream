@@ -1,4 +1,5 @@
-## HidenCloud自动续期 
+## HidenCloud自动续期
+使用Github Actions 自动给HidenCloud服务续期,HidenCloud容易封多账号，多账号最好是隔离好环境
 
 ## 配置
 
