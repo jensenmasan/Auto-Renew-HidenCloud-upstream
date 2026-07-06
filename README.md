@@ -4,7 +4,7 @@
 
 在仓库 `Settings → Secrets and variables → Actions` 中添加以下 Secrets：
 
-| Secret 名称 | 必填 | 说明 | 示例 |
+| Secret 名称 | 是否必填 | 说明 | 示例 |
 |---|---|---|---|
 | `COOKIE_VALUE`  | ✅必填 | Remenber_web cookie的值  |
 | `EMAIL`         | ✅必填 | HidenCloud 邮箱 |
@@ -19,10 +19,12 @@
 `NODE_LINK` 支持以下任意一种代理协议的完整分享链接（不配置则直连）：
 
 - **VLESS**：`vless://uuid@server:port?security=reality&sni=...&type=ws&...`
-- **VMess**：`vmess://base64encoded`
+- **VMess**：`vmess://base64encoded...`
 - **Trojan**：`trojan://password@server:port?sni=...&type=ws&...`
-- **Shadowsocks**：`ss://base64@server:port`
-- **SOCKS5**：`socks5://user:pass@server:port` 或 `socks5://server:port`
+- **tuic**：`tuic://uuid:password@server:port...`
+- **anytls**：`anytls://uuid@server:port...`
+- **hysteria2**：`hysteria2://base64@server:port...`
+- **SOCKS5**：`socks5://user:pass@server:port` 或 `socks://user:pass@server:port` 或 `socks5://server:port`
 
 ## 使用
 
