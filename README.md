@@ -14,7 +14,7 @@
 | `TG_BOT_TOKEN`  | ❌可选 | Telegram Bot Token | 
 | `TG_CHAT_ID`    | ❌可选 | Telegram Chat ID |
 
-COOKIE_VALUE的获取如图
+COOKIE_VALUE的获取如图(登录dashborad后F12或右键检查,选择 应用程序 或 Appcations 或 存储,左边找到cookie获取)
 <img width="1200" height="600" alt="image" src="https://github.com/user-attachments/assets/be28a597-eef8-481b-862d-cc98533a2e27" />
 
 
