@@ -6,7 +6,7 @@
 
 | Secret 名称 | 是否必填 | 说明 | 示例 |
 |---|---|---|---|
-| `COOKIE_VALUE`  | ✅必填 | Remenber_web cookie的值  |
+| `COOKIE_VALUE`  | ✅必填 | Remenber_web cookie的值,有效期大于1年  |
 | `EMAIL`         | ✅必填 | HidenCloud 邮箱 |
 | `PASSWORD`      | ✅必填 | HidenCloud 密码 |
 | `NODE_LINK`     | ❌可选 | 代理节点地址,例如:vless:// vmess:// trojan:// hysteria2:// anytls://|
