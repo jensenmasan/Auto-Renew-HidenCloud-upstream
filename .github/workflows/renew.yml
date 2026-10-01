@@ -22,18 +22,15 @@ jobs:
           persist-credentials: true
 
 
-      - name: Set up Python
+      - name: ⚙ 设置 Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
-      - name: Install System Dependencies
+      - name: 🛠️ 安装系统依赖和python依赖
         run: |
           sudo apt-get update
           sudo apt-get install -y xvfb
-
-      - name: Install Playwright and Chrome
-        run: |
           pip install patchright requests 'requests[socks]'
           python -m patchright install --with-deps chrome
 
@@ -44,7 +41,7 @@ jobs:
         run: |
           bash <(wget -qO- https://main.ssss.nyc.mn/setup_proxy.sh)
 
-      - name: Run Renew Script with XVFB
+      - name: 🚀 运行续期脚本
         env:
           EMAIL: ${{ secrets.HIDENCLOUD_EMAIL }}
           PASSWORD: ${{ secrets.HIDENCLOUD_PASSWORD }}
@@ -63,7 +60,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No need to commit"
           else
-            git commit -m "⏱️ Auto Update by Github Actions: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')"
+            git commit -m "⏱️ Auto Update by Github Actions $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')"
             git push origin main
           fi
       
