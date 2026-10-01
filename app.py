@@ -429,12 +429,13 @@ def login(page):
             if "auth/login" not in page.url:
                 log(f"✅ Cookie 登录成功！当前已到达dashboard页面")
                 return True
-            log("❌ Cookie 失效，请更换")
-        except:
-            pass
+            log("⚠️ Cookie 失效，切换到账号密码登录...")
+        except Exception as e:
+            log(f"⚠️ Cookie 登录出现异常: 账号密码登录...")
 
     # 2. 账号密码登录
     if not EMAIL or not PASSWORD:
+        log("❌ 未配置 EMAIL/PASSWORD，无法进行账号密码登录")
         return False
     log("💣 尝试账号密码登录...")
     try:
@@ -463,7 +464,6 @@ def login(page):
                    'input[name="PASSWORD"], input[type="password"]')
         email_input = page.locator(email_sel).first
         pwd_input = page.locator(pwd_sel).first
-        # Turnstile 通过后网关还会做几秒 "Validating security..." 才渲染表单
         email_input.wait_for(state="visible", timeout=60000)
         log("⌨️ 输入账号...")
         email_input.click()
@@ -507,7 +507,7 @@ def login(page):
         page_title = page.title()
         log(f"📝 当前Title: {page_title}")
         if "auth/login" in page.url:
-            log("❌ 登录失败。")
+            log("❌ 登录失败，账号密码错误或被封禁")
             page.screenshot(path="login_fail.png")
             return False
         log(f"✅ 账号密码登录成功！当前已到达dashboard页面")
@@ -685,6 +685,8 @@ def renew_service(page):
 
 def main():
     # 检查必要环境变量
+    log(f"🔍 凭证检测: COOKIE_VALUE={'已配置' if COOKIE_VALUE else '未配置'}, "
+        f"EMAIL={'已配置' if EMAIL else '未配置'}, PASSWORD={'已配置' if PASSWORD else '未配置'}")
     if not COOKIE_VALUE and not (EMAIL and PASSWORD):
         log("❌ 缺少登录凭证")
         sys.exit(1)
